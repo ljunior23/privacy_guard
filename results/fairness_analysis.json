@@ -1,0 +1,26 @@
+{
+  "baseline": {
+    "model_name": "baseline",
+    "overall_accuracy": 0.8453249336870027
+  },
+  "dpsgd_gaussian_5": {
+    "model_name": "dpsgd_gaussian_5",
+    "overall_accuracy": 0.7509946949602122
+  },
+  "dpsgd_gaussian_1": {
+    "model_name": "dpsgd_gaussian_1",
+    "overall_accuracy": 0.7509946949602122
+  },
+  "dpsgd_gaussian_05": {
+    "model_name": "dpsgd_gaussian_05",
+    "overall_accuracy": 0.7509946949602122
+  },
+  "dpsgd_laplace_1": {
+    "model_name": "dpsgd_laplace_1",
+    "overall_accuracy": 0.7509946949602122
+  },
+  "pate": {
+    "model_name": "pate",
+    "overall_accuracy": 0.8405172413793104
+  }
+}

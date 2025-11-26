@@ -1,0 +1,110 @@
+{
+  "baseline": {
+    "confidence_based": {
+      "auc": 0.5096302646452469,
+      "accuracy": 0.49995855781185244
+    },
+    "label_only": {
+      "auc": 0.49966494514476306,
+      "accuracy": 0.4987981765437215
+    },
+    "metric_based": {
+      "auc": 0.5149924063758964,
+      "accuracy": 0.5006216328222131
+    },
+    "adaptive_threshold": {
+      "auc": 0.5107096507449523,
+      "accuracy": 0.5058433485288023
+    }
+  },
+  "dpsgd_gaussian_5": {
+    "confidence_based": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "label_only": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "metric_based": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "adaptive_threshold": {
+      "auc": 0.5,
+      "accuracy": 0.49995855781185244
+    }
+  },
+  "dpsgd_gaussian_1": {
+    "confidence_based": {
+      "auc": 0.4999793630610775,
+      "accuracy": 0.5000414421881475
+    },
+    "label_only": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "metric_based": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "adaptive_threshold": {
+      "auc": 0.5,
+      "accuracy": 0.49995855781185244
+    }
+  },
+  "dpsgd_gaussian_05": {
+    "confidence_based": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "label_only": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "metric_based": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "adaptive_threshold": {
+      "auc": 0.5,
+      "accuracy": 0.5000414421881475
+    }
+  },
+  "dpsgd_laplace_1": {
+    "confidence_based": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "label_only": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "metric_based": {
+      "auc": 0.5000206369389225,
+      "accuracy": 0.5000414421881475
+    },
+    "adaptive_threshold": {
+      "auc": 0.5,
+      "accuracy": 0.49995855781185244
+    }
+  },
+  "pate": {
+    "confidence_based": {
+      "auc": 0.5084627937150271,
+      "accuracy": 0.5004558640696228
+    },
+    "label_only": {
+      "auc": 0.5011972859485034,
+      "accuracy": 0.4998756734355574
+    },
+    "metric_based": {
+      "auc": 0.5105639143859964,
+      "accuracy": 0.5009531703273933
+    },
+    "adaptive_threshold": {
+      "auc": 0.5101432203561227,
+      "accuracy": 0.5061748860339826
+    }
+  }
+}
