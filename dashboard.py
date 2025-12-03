@@ -15,7 +15,7 @@ from pathlib import Path
 
 # Page configuration
 st.set_page_config(
-    page_title="PrivacyGuard Enhanced Dashboard",
+    page_title="PrivacyGuard Dashboard",
     page_icon="🔒",
     layout="wide",
     initial_sidebar_state="expanded"
