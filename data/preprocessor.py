@@ -76,6 +76,21 @@ class AdultDataProcessor:
             plt.savefig(plots_dir / 'correlation_matrix.png', dpi=300, bbox_inches='tight')
         plt.close()
 
+        counts = df['income'].value_counts()
+        labels = counts.index
+        sizes = counts.values
+        colors = sns.color_palette('pastel')[0:len(labels)]
+
+        plt.figure(figsize=(6, 6))
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=colors, textprops={'fontsize': 14})
+        plt.title('Income Distribution', fontsize=18)
+        plt.axis('equal')
+        if save:
+            plots_dir = Path(r"C:\Users\hghus\Downloads\privacy_guard\results\plots\eda")
+            plots_dir.mkdir(parents=True, exist_ok=True)
+            plt.savefig(plots_dir / 'income_pie_chart.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
         # Distribution of Categorical Columns
         for i in range(0, len(categorical_cols), 6):
             subset = categorical_cols[i:i+6]
