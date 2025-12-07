@@ -10,6 +10,11 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 from typing import Tuple, Dict, List
 import pickle
 import os
+import sys
+import matplotlib.pyplot as plt
+import seaborn as sns
+from pathlib import Path
+import math
 
 class AdultDataProcessor:
     """Preprocessor for Adult Income dataset with fairness tracking"""
@@ -20,6 +25,76 @@ class AdultDataProcessor:
         self.label_encoders = {}
         self.feature_names = []
         self.sensitive_indices = {}
+
+    def plot_eda(self, df: pd.DataFrame, save: bool = True):
+        
+        numerical_cols = df.select_dtypes(include=[np.number]).columns
+        categorical_cols = df.select_dtypes(exclude=[np.number]).columns
+
+        nrows = 5
+        ncols = 2
+        plots_dir = Path(r"C:\Users\hghus\Downloads\privacy_guard\results\plots\eda")
+        # Distribution of Numerical Columns
+        plt.figure(figsize=(14, 5*nrows))
+        for i, col in enumerate(numerical_cols, 1):
+            plt.subplot(nrows, ncols, i)
+            sns.histplot(df[col].dropna(), kde=True)
+            plt.title(f'Distribution of {col}', fontsize=20)
+            plt.xlabel(col, fontsize=20)
+            plt.ylabel('Frequency', fontsize=20)
+            plt.xticks(fontsize=20)
+            plt.yticks(fontsize=20)
+        plt.tight_layout()
+        plt.subplots_adjust(top=0.95, hspace=1)
+        if save:
+            plt.savefig(plots_dir / 'numerical_distributions.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        # Boxplot of Numerical Columns
+        plt.figure(figsize=(28, 48))
+        for i, col in enumerate(numerical_cols, 1):
+            plt.subplot(nrows, ncols, i)
+            sns.boxplot(x=df[col])
+            plt.title(f'Box Plot of {col}', fontsize=20)
+            plt.xlabel(col, fontsize=20)
+            plt.xticks(fontsize=20)
+            plt.yticks(fontsize=20)
+        plt.tight_layout()
+        plt.subplots_adjust(top=0.95, hspace=1)
+        if save:
+            plt.savefig(plots_dir / 'numerical_boxplots.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        # Correlation Matrix of Numerical Columns
+        corr_matrix = df[numerical_cols].corr()
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap='coolwarm')
+        plt.title('Correlation Matrix Heatmap', fontsize=20)
+        plt.xticks(fontsize=12)
+        plt.yticks(fontsize=12)
+        if save:
+            plt.savefig(plots_dir / 'correlation_matrix.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        # Distribution of Categorical Columns
+        for i in range(0, len(categorical_cols), 6):
+            subset = categorical_cols[i:i+6]
+            nrows_cat = math.ceil(len(subset) / ncols)
+            plt.figure(figsize=(14, 5 * nrows_cat))
+            plt.suptitle("Categorical Column Distributions", fontsize=20, y=1.02)
+            for j, col in enumerate(subset, 1):
+                plt.subplot(nrows_cat, ncols, j)
+                sns.countplot(y=df[col])
+                plt.title(f'Distribution of {col}', fontsize=16)
+                plt.xlabel('Frequency', fontsize=14)
+                plt.ylabel(col, fontsize=14)
+                plt.xticks(fontsize=12)
+                plt.yticks(fontsize=12)
+            plt.tight_layout(pad=2.0)
+            plt.subplots_adjust(top=0.9, hspace=0.6, wspace=0.4)
+            if save:
+                plt.savefig(plots_dir / f'categorical_distribution_{i//6+1}.png', dpi=300, bbox_inches='tight')
+            plt.close()
         
     def load_data(self, filepath: str = None) -> pd.DataFrame:
         """Load Adult dataset from file or download"""
@@ -238,7 +313,8 @@ if __name__ == "__main__":
     print("Loading Adult dataset...")
     df = processor.load_data()
     print(f"Loaded {len(df)} records")
-    
+    print("Plotting EDA before preprocessing...")
+    processor.plot_eda(df, save=True)
     print("\nPreprocessing...")
     X, y, metadata = processor.preprocess(df)
     print(f"Features: {X.shape[1]}")

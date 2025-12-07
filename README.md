@@ -60,7 +60,7 @@ privacyguard_enhanced/
 # Clone or navigate to the project directory
 cd privacyguard_enhanced
 
-# Install dependencies
+# Install dependencies (If the pip install fails make sure to use a previous version of python recommended version 3.9.13)
 pip install -r requirements.txt --break-system-packages
 ```
 
