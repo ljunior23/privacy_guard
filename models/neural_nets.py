@@ -1,8 +1,3 @@
-"""
-Model Architectures
-Neural network models with differential privacy support
-"""
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
