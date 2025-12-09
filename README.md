@@ -114,10 +114,10 @@ Comprehensive evaluation showing which attacks are effective against which defen
 
 | Attack Type | Baseline | ε=5.0 | ε=1.0 | ε=0.5 | PATE |
 |------------|----------|-------|-------|-------|------|
-| Confidence | 0.72 | 0.65 | 0.54 | 0.51 | 0.53 |
-| Label-Only | 0.68 | 0.62 | 0.55 | 0.52 | 0.54 |
-| Metric | 0.70 | 0.64 | 0.56 | 0.53 | 0.52 |
-| Threshold | 0.69 | 0.63 | 0.55 | 0.52 | 0.53 |
+| Confidence | 0.51 | 0.50 | 0.50 | 0.50 | 0.51 |
+| Label-Only | 0.50 | 0.50 | 0.50 | 0.50 | 0.50 |
+| Metric | 0.52 | 0.50 | 0.50 | 0.50 | 0.51 |
+| Threshold | 0.51 | 0.50 | 0.50 | 0.50| 0.51 |
 
 ### Fairness Analysis
 
