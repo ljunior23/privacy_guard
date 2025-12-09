@@ -33,7 +33,7 @@ class AdultDataProcessor:
 
         nrows = 5
         ncols = 2
-        plots_dir = Path(r"C:\Users\hghus\Downloads\privacy_guard\results\plots\eda")
+        plots_dir = "results/plots/eda"
         # Distribution of Numerical Columns
         plt.figure(figsize=(14, 5*nrows))
         for i, col in enumerate(numerical_cols, 1):
@@ -47,7 +47,7 @@ class AdultDataProcessor:
         plt.tight_layout()
         plt.subplots_adjust(top=0.95, hspace=1)
         if save:
-            plt.savefig(plots_dir / 'numerical_distributions.png', dpi=300, bbox_inches='tight')
+            plt.savefig(plots_dir + '/numerical_distributions.png', dpi=300, bbox_inches='tight')
         plt.close()
 
         # Boxplot of Numerical Columns
@@ -62,7 +62,7 @@ class AdultDataProcessor:
         plt.tight_layout()
         plt.subplots_adjust(top=0.95, hspace=1)
         if save:
-            plt.savefig(plots_dir / 'numerical_boxplots.png', dpi=300, bbox_inches='tight')
+            plt.savefig(plots_dir + '/numerical_boxplots.png', dpi=300, bbox_inches='tight')
         plt.close()
 
         # Correlation Matrix of Numerical Columns
@@ -73,7 +73,7 @@ class AdultDataProcessor:
         plt.xticks(fontsize=12)
         plt.yticks(fontsize=12)
         if save:
-            plt.savefig(plots_dir / 'correlation_matrix.png', dpi=300, bbox_inches='tight')
+            plt.savefig(plots_dir + '/correlation_matrix.png', dpi=300, bbox_inches='tight')
         plt.close()
 
         counts = df['income'].value_counts()
@@ -86,9 +86,9 @@ class AdultDataProcessor:
         plt.title('Income Distribution', fontsize=18)
         plt.axis('equal')
         if save:
-            plots_dir = Path(r"C:\Users\hghus\Downloads\privacy_guard\results\plots\eda")
-            plots_dir.mkdir(parents=True, exist_ok=True)
-            plt.savefig(plots_dir / 'income_pie_chart.png', dpi=300, bbox_inches='tight')
+            plots_dir = "results/plots/eda"
+            # plots_dir.mkdir(parents=True, exist_ok=True)
+            plt.savefig(plots_dir + '/income_pie_chart.png', dpi=300, bbox_inches='tight')
         plt.close()
 
         # Distribution of Categorical Columns
@@ -108,10 +108,10 @@ class AdultDataProcessor:
             plt.tight_layout(pad=2.0)
             plt.subplots_adjust(top=0.9, hspace=0.6, wspace=0.4)
             if save:
-                plt.savefig(plots_dir / f'categorical_distribution_{i//6+1}.png', dpi=300, bbox_inches='tight')
+                plt.savefig(plots_dir + f'/categorical_distribution_{i//6+1}.png', dpi=300, bbox_inches='tight')
             plt.close()
         
-    def load_data(self, filepath: str = None) -> pd.DataFrame:
+    def load_data(self, filepath = "data\\adult-data.csv") -> pd.DataFrame:
         """Load Adult dataset from file or download"""
         
         # Column names for Adult dataset

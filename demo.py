@@ -20,10 +20,10 @@ def test_data_loading():
     
     try:
         processor = AdultDataProcessor(random_seed=42)
-        print("✓ Processor initialized")
+        print("Processor initialized")
         
         # Create synthetic data for testing (avoid downloading)
-        print("✓ Creating synthetic test data...")
+        print("Creating synthetic test data...")
         n_samples = 1000
         n_features = 14
         
@@ -43,14 +43,14 @@ def test_data_loading():
         
         splits = processor.create_train_test_member_splits(X, y, metadata)
         
-        print(f"✓ Train set: {len(splits['X_train'])} samples")
-        print(f"✓ Test set: {len(splits['X_test'])} samples")
-        print(f"✓ Member set: {len(splits['X_member'])} samples")
+        print(f"Train set: {len(splits['X_train'])} samples")
+        print(f"Test set: {len(splits['X_test'])} samples")
+        print(f"Member set: {len(splits['X_member'])} samples")
         
         return splits
         
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f"Error: {e}")
         return None
 
 def test_model_training(splits):
@@ -62,12 +62,12 @@ def test_model_training(splits):
     try:
         input_dim = splits['X_train'].shape[1]
         model = create_model(input_dim, [64, 32])
-        print("✓ Model created")
+        print("Model created")
         
         trainer = StandardTrainer(model, learning_rate=0.01, batch_size=128)
-        print("✓ Trainer initialized")
+        print("Trainer initialized")
         
-        print("✓ Training model (5 epochs)...")
+        print("Training model (5 epochs)...")
         trainer.train(
             splits['X_train'], splits['y_train'],
             splits['X_test'], splits['y_test'],
@@ -78,12 +78,12 @@ def test_model_training(splits):
         # Test prediction
         y_pred = trainer.predict(splits['X_test'])
         accuracy = np.mean(y_pred == splits['y_test'])
-        print(f"✓ Model trained! Test accuracy: {accuracy:.3f}")
+        print(f"Model trained! Test accuracy: {accuracy:.3f}")
         
         return trainer
         
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f"Error: {e}")
         return None
 
 def test_attack(trainer, splits):
@@ -94,7 +94,7 @@ def test_attack(trainer, splits):
     
     try:
         attack = ConfidenceBasedAttack()
-        print("✓ Attack initialized")
+        print("Attack initialized")
         
         # Get predictions for training
         member_conf = trainer.predict_proba(splits['X_member'][:100])
@@ -103,7 +103,7 @@ def test_attack(trainer, splits):
         nonmember_labels = splits['y_nonmember'][:100]
         
         # Train attack
-        print("✓ Training attack model...")
+        print("Training attack model...")
         attack.train(
             member_conf, member_labels,
             nonmember_conf, nonmember_labels
@@ -120,12 +120,12 @@ def test_attack(trainer, splits):
         y_score = np.concatenate([member_preds, nonmember_preds])
         auc = roc_auc_score(y_true, y_score)
         
-        print(f"✓ Attack completed! AUC: {auc:.3f}")
+        print(f"Attack completed! AUC: {auc:.3f}")
         
         return True
         
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f"Error: {e}")
         return False
 
 def test_fairness(trainer, splits):
@@ -136,30 +136,30 @@ def test_fairness(trainer, splits):
     
     try:
         analyzer = FairnessAnalyzer(['race', 'sex'])
-        print("✓ Fairness analyzer initialized")
+        print("Fairness analyzer initialized")
         
         # Get predictions
         y_pred = trainer.predict(splits['X_test'])
         y_true = splits['y_test']
         
         # Analyze fairness
-        print("✓ Computing fairness metrics...")
+        print("Computing fairness metrics...")
         results = analyzer.comprehensive_fairness_analysis(
             y_true, y_pred,
             splits['demographics_test'],
             "Test Model"
         )
         
-        print(f"✓ Overall accuracy: {results['overall_accuracy']:.3f}")
+        print(f"Overall accuracy: {results['overall_accuracy']:.3f}")
         
         for attr_name, attr_results in results['by_attribute'].items():
             dp_diff = attr_results['demographic_parity']['dp_difference']
-            print(f"✓ {attr_name} DP difference: {dp_diff:.3f}")
+            print(f"{attr_name} DP difference: {dp_diff:.3f}")
         
         return True
         
     except Exception as e:
-        print(f"✗ Error: {e}")
+        print(f"Error: {e}")
         return False
 
 def main():
@@ -175,12 +175,12 @@ def main():
     # Run tests
     splits = test_data_loading()
     if splits is None:
-        print("\n✗ Data loading failed. Cannot continue.")
+        print("\nData loading failed. Cannot continue.")
         return
     
     trainer = test_model_training(splits)
     if trainer is None:
-        print("\n✗ Model training failed. Cannot continue.")
+        print("\nModel training failed. Cannot continue.")
         return
     
     test_attack(trainer, splits)

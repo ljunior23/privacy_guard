@@ -30,14 +30,14 @@ class PrivacyVisualizer:
         """
         # Check if data is available
         if not attack_matrix or not any(attack_matrix.values()):
-            print("⚠️  Skipping attack resistance matrix - no data available")
+            print("Skipping attack resistance matrix - no data available")
             return None
         
         # Filter out empty defenses
         attack_matrix = {k: v for k, v in attack_matrix.items() if v}
         
         if not attack_matrix:
-            print("⚠️  Skipping attack resistance matrix - all defenses empty")
+            print("Skipping attack resistance matrix - all defenses empty")
             return None
         # Prepare data
         defenses = list(attack_matrix.keys())
@@ -95,11 +95,11 @@ class PrivacyVisualizer:
         """
         # Check if data is complete
         if not tradeoff_data or not all(k in tradeoff_data for k in ['epsilon', 'accuracy', 'avg_attack_auc']):
-            print("⚠️  Skipping privacy-utility tradeoff - incomplete data")
+            print("Skipping privacy-utility tradeoff - incomplete data")
             return None
         
         if not tradeoff_data['epsilon']:
-            print("⚠️  Skipping privacy-utility tradeoff - no data points")
+            print("Skipping privacy-utility tradeoff - no data points")
             return None
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
         
@@ -146,7 +146,7 @@ class PrivacyVisualizer:
         """
         # Check if data is complete
         if not fairness_data or not any(fairness_data.values()):
-            print("⚠️  Skipping fairness comparison - no data available")
+            print("Skipping fairness comparison - no data available")
             return None
         
         # Extract data
@@ -184,7 +184,7 @@ class PrivacyVisualizer:
                 eo_diffs.append(0)
         
         if not defenses:
-            print("⚠️  Skipping fairness comparison - no valid defense data")
+            print("Skipping fairness comparison - no valid defense data")
             return None
         
         # Create plot
@@ -239,11 +239,11 @@ class PrivacyVisualizer:
         """
         # Check if data is complete
         if not tradeoff_data or not all(k in tradeoff_data for k in ['epsilon', 'accuracy', 'avg_attack_auc', 'avg_dp_difference']):
-            print("⚠️  Skipping Pareto frontier - incomplete data")
+            print("Skipping Pareto frontier - incomplete data")
             return None
         
         if not tradeoff_data['epsilon']:
-            print("⚠️  Skipping Pareto frontier - no data points")
+            print("Skipping Pareto frontier - no data points")
             return None
         fig = plt.figure(figsize=(14, 6))
         
@@ -326,7 +326,7 @@ class PrivacyVisualizer:
             with open(self.results_dir / 'tradeoff_data.json', 'r') as f:
                 tradeoff_data = json.load(f)
         except FileNotFoundError as e:
-            print(f"❌ Error: Results files not found: {e}")
+            print(f"Error: Results files not found: {e}")
             print("\nPlease run the experiment first:")
             print("  python experiments/run_experiments.py")
             return
@@ -353,7 +353,7 @@ class PrivacyVisualizer:
         print("\n" + "="*80)
         print(f"✓ {plots_generated}/4 plots generated successfully")
         if plots_generated < 4:
-            print("\n⚠️  Some plots were skipped due to incomplete data.")
+            print("\nSome plots were skipped due to incomplete data.")
             print("Run the full experiment to generate all visualizations.")
         print(f"✓ Saved to: {self.plots_dir}")
         print("="*80)
