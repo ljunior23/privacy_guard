@@ -1,8 +1,3 @@
-"""
-PrivacyGuard Enhanced: Configuration Module
-Centralizes all project parameters and settings
-"""
-
 from dataclasses import dataclass
 from typing import List, Dict
 import numpy as np
