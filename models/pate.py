@@ -1,8 +1,3 @@
-"""
-PATE (Private Aggregation of Teacher Ensembles) Implementation
-Alternative privacy-preserving mechanism for comparison with DP-SGD
-"""
-
 import numpy as np
 import torch
 import torch.nn as nn
