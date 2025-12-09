@@ -1,7 +1,3 @@
-"""
-Quick Demo Script
-Tests the installation and runs a minimal example
-"""
 import os
 import sys
 sys.path.append(os.getcwd())  # Ensure current directory is in path
