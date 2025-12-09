@@ -16,10 +16,6 @@ seaborn
 plotly
 streamlit
 
-# Fairness
-aif360
-fairlearn
-
 # Utilities
 tqdm
 joblib
