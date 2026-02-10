@@ -4,7 +4,7 @@
 
 A comprehensive framework for evaluating privacy-preserving machine learning through multiple membership inference attacks, differential privacy mechanisms, and fairness analysis.
 
-## 🎯 Project Overview
+##  Project Overview
 
 This project provides an in-depth analysis of privacy-utility-fairness tradeoffs in machine learning, featuring:
 
@@ -30,7 +30,7 @@ This project provides an in-depth analysis of privacy-utility-fairness tradeoffs
   - What-if analysis
   - Publication-quality visualizations
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 privacyguard_enhanced/
@@ -52,7 +52,7 @@ privacyguard_enhanced/
 └── README.md                      # This file
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Installation
 
@@ -106,7 +106,7 @@ streamlit run dashboard.py
 
 Then open your browser to `http://localhost:8501`
 
-## 📊 Key Features
+##  Key Features
 
 ### Attack Resistance Matrix
 
@@ -136,7 +136,7 @@ Per-group accuracy and fairness metrics:
 - **ε = 1.0**: Balanced approach, ~7% accuracy loss
 - **ε = 5.0**: Minimal privacy loss, ~2% accuracy loss
 
-## 🎓 Novel Contributions
+##  Novel Contributions
 
 1. **Multi-Attack Comparison**: First comprehensive study comparing 4 different attack types against DP-SGD on Adult dataset
 
@@ -146,7 +146,7 @@ Per-group accuracy and fairness metrics:
 
 4. **Attack Resistance Matrix**: Publication-quality evaluation identifying which defenses work against which attacks
 
-## 📈 Usage Examples
+##  Usage Examples
 
 ### Custom Configuration
 
@@ -204,21 +204,21 @@ orchestrator.print_results()
 - **DP-SGD**: Gaussian mechanism with gradient clipping (C=1.0)
 - **PATE**: 10 teacher models with Laplacian noise aggregation
 
-## 📚 References
+##  References
 
 - Abadi et al. (2016). "Deep Learning with Differential Privacy." CCS.
 - Shokri et al. (2017). "Membership Inference Attacks Against Machine Learning Models." S&P.
 - Choquette-Choo et al. (2021). "Label-Only Membership Inference Attacks." NeurIPS.
 - Papernot et al. (2017). "Semi-supervised Knowledge Transfer for Deep Learning from Private Training Data." ICLR.
 
-## 🤝 Team Contributions
+##  Team Contributions
 
 This project template provides a comprehensive framework for:
 - **DS Team Members**: Data preprocessing, fairness metrics
 - **CS Team Members**: Attack implementations, privacy mechanisms
 - **ML Team Member**: Model architectures, training pipelines
 
-## 📝 Results Format
+##  Results Format
 
 Results are saved in multiple formats:
 
@@ -236,7 +236,7 @@ Results are saved in multiple formats:
 ### Python Objects
 - `full_results.pkl`: Complete experimental results
 
-## ⚙️ Configuration Options
+##  Configuration Options
 
 Edit `config.py` to customize:
 
@@ -260,7 +260,7 @@ delta = 1e-5
 shadow_models = 10
 ```
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Opacus Not Available
 If Opacus is not installed, the code will fall back to a manual DP-SGD implementation. For best results, install Opacus:
@@ -281,11 +281,11 @@ epochs = 20
 shadow_models = 5
 ```
 
-## 📄 License
+##  License
 
 This project is for educational purposes as part of CIS 545 coursework.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Adult Income dataset from UCI Machine Learning Repository
 - Differential privacy implementations inspired by Google's TensorFlow Privacy and PyTorch Opacus
