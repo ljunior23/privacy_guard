@@ -186,7 +186,7 @@ results = orchestrator.evaluate_attacks(target_model, X_member, y_member,
 orchestrator.print_results()
 ```
 
-## 🔬 Experimental Design
+## Experimental Design
 
 ### Data Splits
 - **Training Set**: 60% - for model training
